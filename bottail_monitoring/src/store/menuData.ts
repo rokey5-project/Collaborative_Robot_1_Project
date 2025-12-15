@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { MenuDataType } from '@/types/menuDataType'
 
-const useCounterStore = defineStore('menu', () => {
+const useMenuStore = defineStore('menu', () => {
   const menuList: MenuDataType[] = [
     {
       category: 'whisky',
@@ -213,12 +213,20 @@ const useCounterStore = defineStore('menu', () => {
   ]
 
   const menuState = ref('whisky')
-
   const setMenuState = (category: string) => {
     menuState.value = category
   }
 
-  return { menuList, menuState, setMenuState }
+  const modalState = ref(false)
+  const openCloseModal = () => {
+    if (modalState.value) {
+      modalState.value = false
+    } else {
+      modalState.value = true
+    }
+  }
+
+  return { menuList, menuState, setMenuState, modalState, openCloseModal }
 })
 
-export default useCounterStore
+export default useMenuStore

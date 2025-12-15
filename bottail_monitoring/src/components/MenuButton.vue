@@ -10,12 +10,12 @@
 </template>
 
 <script setup lang="ts">
-import useCounterStore from '../store/menuData'
+import useMenuStore from '../store/menuData'
 import { storeToRefs } from 'pinia';
 import type { MenuDataType } from '@/types/menuDataType'
 import palette from '../styles/colors'
 
-const { menuState } = storeToRefs(useCounterStore())
+const { menuState } = storeToRefs(useMenuStore())
 const { purple02 } = palette
 
 const props = defineProps<{
@@ -43,7 +43,6 @@ const isSelectedMenu = () => {
   .menu-text {
     color: #fff;
     font-size: 28px;
-    font-family: 'NanumGothicEcoBold', sans-serif;
   }
 
   &.selected {

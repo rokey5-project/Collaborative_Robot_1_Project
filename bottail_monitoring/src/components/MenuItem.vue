@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-item-container">
+  <div class="menu-item-container" @click="openCloseModal">
     <div class="menu-item-image-wrap">
       <img
         :src="props.item.image"
@@ -28,10 +28,13 @@
 <script setup lang="ts">
 import type { MenuItemType } from '@/types/menuDataType'
 import palette from '../styles/colors'
+import useMenuStore from '../store/menuData';
 
 const props = defineProps<{
   item: MenuItemType
 }>();
+
+const { openCloseModal } = useMenuStore()
 
 const { gray01 } = palette
 

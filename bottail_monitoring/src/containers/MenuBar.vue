@@ -26,10 +26,10 @@
 import router from '@/router';
 import MenuButton from '../components/MenuButton.vue'
 import palette from '../styles/colors'
-import useCounterStore from '../store/menuData'
+import useMenuStore from '../store/menuData'
 
 const { purple01 } = palette
-const { menuList, setMenuState } = useCounterStore()
+const { menuList, setMenuState } = useMenuStore()
 
 const goToAdminPage = () => {
   router.push({ name: 'admin' });
@@ -75,8 +75,8 @@ const goToAdminPage = () => {
       gap: 10px;
 
       .menu-setting-icon-wrap {
-        width: 37px;
-        height: 37px;
+        width: 34px;
+        height: 34px;
 
         .menu-setting-icon {
           width: 100%;
@@ -86,7 +86,7 @@ const goToAdminPage = () => {
 
       .menu-setting-text {
         color: #fff;
-        font-size: 32px;
+        font-size: 28px;
         font-family: 'NanumGothicEcoBold', sans-serif;
       }
     }

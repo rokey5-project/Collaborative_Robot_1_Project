@@ -1,4 +1,5 @@
 <template>
+  <OrderModal v-show="modalState" />
   <div class="order-container">
     <MenuBar />
     <MenuItemList />
@@ -8,6 +9,11 @@
 <script setup lang="ts">
 import MenuBar from '@/containers/MenuBar.vue';
 import MenuItemList from '@/containers/MenuItemList.vue';
+import OrderModal from '../components/OrderModal.vue';
+import useMenuStore from '../store/menuData';
+import { storeToRefs } from 'pinia';
+
+const { modalState } = storeToRefs(useMenuStore())
 
 </script>
 

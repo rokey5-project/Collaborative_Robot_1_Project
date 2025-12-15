@@ -16,12 +16,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import useCounterStore from '../store/menuData'
+import useMenuStore from '../store/menuData'
 import { storeToRefs } from 'pinia';
 import MenuItem from '@/components/MenuItem.vue';
 
-const { menuList} = useCounterStore()
-const { menuState } = storeToRefs(useCounterStore())
+const { menuList} = useMenuStore()
+const { menuState } = storeToRefs(useMenuStore())
 
 const filterdData = computed(() => {
     return (
@@ -60,7 +60,7 @@ const getSelectedCategoryName = computed(() => {
       grid-template-columns: 1fr 1fr 1fr;
     }
 
-  .menu-list-container::-webkit-scrollbar {
+  .menu-list::-webkit-scrollbar {
     display: none;
   }
 }
