@@ -10,7 +10,7 @@
 import MenuBar from '@/containers/MenuBar.vue';
 import MenuItemList from '@/containers/MenuItemList.vue';
 import OrderModal from '../components/OrderModal.vue';
-import useMenuStore from '../store/menuData';
+import useMenuStore from '../store/storeMenuData';
 import { storeToRefs } from 'pinia';
 import palette from '../styles/colors'
 

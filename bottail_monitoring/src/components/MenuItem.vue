@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import type { MenuItemType } from '@/types/menuDataType'
 import palette from '../styles/colors'
-import useMenuStore from '../store/menuData';
+import useMenuStore from '../store/storeMenuData';
 
 const props = defineProps<{
   item: MenuItemType

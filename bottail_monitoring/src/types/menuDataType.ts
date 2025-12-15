@@ -11,3 +11,8 @@ export type MenuItemType = {
   description: string
   image: string
 }
+
+export type AdminMenuType = {
+  title: string
+  category: string
+}

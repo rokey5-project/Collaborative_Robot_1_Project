@@ -232,6 +232,12 @@ const useMenuStore = defineStore('menu', () => {
     orderItemInfo.value = data
   }
 
+  const adminMenuState = ref('inventory')
+
+  const setAdminMenuState = (category: string) => {
+    adminMenuState.value = category
+  }
+
   return {
     menuList,
     menuState,
@@ -240,6 +246,8 @@ const useMenuStore = defineStore('menu', () => {
     openCloseModal,
     orderItemInfo,
     setOrderItemInfo,
+    adminMenuState,
+    setAdminMenuState,
   }
 })
 

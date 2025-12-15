@@ -1,10 +1,10 @@
 <template>
   <div
-    class="menu-button"
+    class="admin-menu-button"
     :class="{'selected': isSelectedMenu()}"
   >
-    <div class="menu-text">
-      {{ props.data.name }}
+    <div class="admin-menu-text">
+      {{ props.data.title }}
     </div>
   </div>
 </template>
@@ -12,18 +12,16 @@
 <script setup lang="ts">
 import useMenuStore from '../store/storeMenuData'
 import { storeToRefs } from 'pinia';
-import type { MenuDataType } from '@/types/menuDataType'
-import palette from '../styles/colors'
+import type { AdminMenuType } from '@/types/menuDataType'
 
-const { menuState } = storeToRefs(useMenuStore())
-const { purple02 } = palette
+const { adminMenuState } = storeToRefs(useMenuStore())
 
 const props = defineProps<{
-  data: MenuDataType
+  data: AdminMenuType
 }>();
 
 const isSelectedMenu = () => {
-  if(menuState.value === props.data.category) {
+  if(adminMenuState.value === props.data.category) {
     return true;
   }
   return false
@@ -33,20 +31,20 @@ const isSelectedMenu = () => {
 </script>
 
 <style scoped lang="css">
-.menu-button {
+.admin-menu-button {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 45px;
   padding: 15px 20px;
 
-  .menu-text {
+  .admin-menu-text {
     color: #fff;
     font-size: 28px;
   }
 
   &.selected {
-    background-color: v-bind(purple02);
+    background-color: #999;
   }
 }
 </style>

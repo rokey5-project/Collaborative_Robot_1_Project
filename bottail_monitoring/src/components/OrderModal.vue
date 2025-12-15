@@ -46,7 +46,7 @@
 </template>
 
 <script lang="ts" setup>
-import useCounterStore from '@/store/menuData';
+import useCounterStore from '@/store/storeMenuData';
 import palette from '../styles/colors'
 import { storeToRefs } from 'pinia';
 import { ElMessage } from 'element-plus'

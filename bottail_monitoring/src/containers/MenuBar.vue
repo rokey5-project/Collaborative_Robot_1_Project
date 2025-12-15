@@ -26,7 +26,7 @@
 import router from '@/router';
 import MenuButton from '../components/MenuButton.vue'
 import palette from '../styles/colors'
-import useMenuStore from '../store/menuData'
+import useMenuStore from '../store/storeMenuData'
 
 const { purple01, black01 } = palette
 const { menuList, setMenuState } = useMenuStore()

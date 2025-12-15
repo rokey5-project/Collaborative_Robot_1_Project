@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import useMenuStore from '../store/menuData'
+import useMenuStore from '../store/storeMenuData'
 import { storeToRefs } from 'pinia';
 import MenuItem from '@/components/MenuItem.vue';
 
