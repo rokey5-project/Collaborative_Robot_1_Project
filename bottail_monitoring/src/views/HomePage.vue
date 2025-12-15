@@ -11,6 +11,9 @@
 
 <script setup lang="ts">
 import router from '@/router';
+import palette from '../styles/colors'
+
+const { purple01 } = palette
 
 const goToOrderPage = () => {
   router.push({ name: 'orderPage' });
@@ -18,7 +21,7 @@ const goToOrderPage = () => {
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   .home-background {
     width: 100vw;
     height: 100vh;
@@ -43,7 +46,7 @@ const goToOrderPage = () => {
       justify-content: center;
       font-size: 32px;
       font-weight: bold;
-      background-color: #B162EC;
+      background-color: v-bind(purple01);
       color: #fff;
       text-align: center;
       border: none;

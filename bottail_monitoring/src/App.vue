@@ -7,8 +7,6 @@ import { RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped>
-@import './styles/reset.css';
-
+<style scoped lang="scss">
 
 </style>
