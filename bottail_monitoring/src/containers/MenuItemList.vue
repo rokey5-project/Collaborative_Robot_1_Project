@@ -52,6 +52,7 @@ const getSelectedCategoryName = computed(() => {
     padding: 30px;
     font-size: 40px;
     font-family: 'NanumGothicEcoBold', sans-serif;
+    color: #fff;
   }
 
   .menu-list {

@@ -79,6 +79,7 @@ const getPriceText = (price: number) => {
 
     .menu-item-name-text {
       font-size: 24px;
+      color: #fff;
     }
   }
 
@@ -89,10 +90,10 @@ const getPriceText = (price: number) => {
     align-items: center;
     padding: 0px 30px;
     box-sizing: border-box;
-    color: v-bind(gray01);
 
     .menu-item-description-text {
       font-size: 16px;
+      color: v-bind(gray01);
     }
   }
 
@@ -105,6 +106,7 @@ const getPriceText = (price: number) => {
 
     .menu-item-price-text {
       font-size: 22px;
+      color: #fff;
     }
   }
 }

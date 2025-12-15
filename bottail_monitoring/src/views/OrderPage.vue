@@ -12,8 +12,10 @@ import MenuItemList from '@/containers/MenuItemList.vue';
 import OrderModal from '../components/OrderModal.vue';
 import useMenuStore from '../store/menuData';
 import { storeToRefs } from 'pinia';
+import palette from '../styles/colors'
 
 const { modalState } = storeToRefs(useMenuStore())
+const { black01 } = palette
 
 </script>
 
@@ -22,5 +24,6 @@ const { modalState } = storeToRefs(useMenuStore())
   display: flex;
   width: 100vw;
   height: 100vh;
+  background-color: v-bind(black01);
 }
 </style>

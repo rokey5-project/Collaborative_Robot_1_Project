@@ -15,7 +15,7 @@
       <div class="menu-setting-icon-wrap">
         <img src="../assets/setting.svg" alt="setting-icon" class="menu-setting-icon"/>
       </div>
-      <div class="menu-setting-text" @click="goToAdminPage">
+      <div class="menu-setting-text" @click="goToLoginPage">
         관리자모드
       </div>
     </div>
@@ -28,11 +28,11 @@ import MenuButton from '../components/MenuButton.vue'
 import palette from '../styles/colors'
 import useMenuStore from '../store/menuData'
 
-const { purple01 } = palette
+const { purple01, black01 } = palette
 const { menuList, setMenuState } = useMenuStore()
 
-const goToAdminPage = () => {
-  router.push({ name: 'admin' });
+const goToLoginPage = () => {
+  router.push({ name: 'login' });
 }
 </script>
 
@@ -69,7 +69,7 @@ const goToAdminPage = () => {
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #000;
+      background-color: v-bind(black01);
       height: 70px;
       padding: 10px;
       gap: 10px;

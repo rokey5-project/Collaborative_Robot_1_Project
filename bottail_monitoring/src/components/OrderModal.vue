@@ -37,7 +37,7 @@
         <el-button size="large" type="danger" @click="openCloseModal">
           취소
         </el-button>
-        <el-button size="large" type="primary" @click="openCloseModal">
+        <el-button size="large" type="primary" @click="clickConfirmButton">
           주문하기
         </el-button>
       </div>
@@ -49,6 +49,7 @@
 import useCounterStore from '@/store/menuData';
 import palette from '../styles/colors'
 import { storeToRefs } from 'pinia';
+import { ElMessage } from 'element-plus'
 
 const { modalState, orderItemInfo } = storeToRefs(useCounterStore())
 const { openCloseModal } = useCounterStore()
@@ -58,13 +59,22 @@ const { gray01 } = palette
 const getPriceText = (price: number) => {
   return `${price?.toLocaleString()}원`
 }
+
+const clickConfirmButton = () => {
+  ElMessage({
+    message: '주문이 완료되었습니다.',
+    type: 'success',
+  })
+
+  openCloseModal()
+}
 </script>
 
 <style scoped lang="scss">
   .modal-container {
 
     .modal-title {
-      font-size: 32px;
+      font-size: 28px;
       margin-left: 20px;
     }
 

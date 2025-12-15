@@ -32,7 +32,6 @@ const goToOrderPage = () => {
     /* background-image: url('../assets/background.jpg');
     background-size: contain; */
 
-
     .home-logo-img {
       width: 30vw;
       height: 70vh;
