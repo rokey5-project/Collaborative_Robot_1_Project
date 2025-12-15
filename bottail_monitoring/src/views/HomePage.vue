@@ -29,8 +29,8 @@ const goToOrderPage = () => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background-image: url('../assets/background.jpg');
-    background-size: contain; */
+    background-image: url('../assets/background.jpg');
+    background-size: contain;
 
     .home-logo-img {
       width: 30vw;

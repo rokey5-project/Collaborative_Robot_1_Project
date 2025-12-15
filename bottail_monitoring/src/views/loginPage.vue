@@ -17,6 +17,7 @@
         size="large"
         type="password"
         show-password
+        @keyup.enter="confirmButton"
         />
     </div>
     <div>
