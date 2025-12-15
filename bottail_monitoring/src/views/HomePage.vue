@@ -16,7 +16,7 @@ import palette from '../styles/colors'
 const { purple01 } = palette
 
 const goToOrderPage = () => {
-  router.push({ name: 'orderPage' });
+  router.push({ name: 'order' });
 }
 
 </script>
@@ -45,12 +45,12 @@ const goToOrderPage = () => {
       align-items: center;
       justify-content: center;
       font-size: 32px;
-      font-weight: bold;
       background-color: v-bind(purple01);
       color: #fff;
       text-align: center;
       border: none;
       border-radius: 10px;
+      font-family: 'NanumGothicEcoBold', sans-serif;
     }
   }
 

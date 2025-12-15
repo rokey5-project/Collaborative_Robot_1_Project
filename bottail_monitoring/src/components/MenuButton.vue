@@ -37,17 +37,17 @@ const isSelectedMenu = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  height: 45px;
   padding: 15px 20px;
 
   .menu-text {
     color: #fff;
-    font-size: 36px;
+    font-size: 28px;
+    font-family: 'NanumGothicEcoBold', sans-serif;
   }
 
   &.selected {
     background-color: v-bind(purple02);
-    border-radius: 10px;
   }
 }
 </style>

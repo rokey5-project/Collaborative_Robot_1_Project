@@ -1,25 +1,20 @@
 <template>
   <div class="order-container">
     <MenuBar />
-    <div class="menu-list">
-      apsb
-    </div>
+    <MenuItemList />
   </div>
 </template>
 
 <script setup lang="ts">
-import MenuBar from '@/components/MenuBar.vue';
+import MenuBar from '@/containers/MenuBar.vue';
+import MenuItemList from '@/containers/MenuItemList.vue';
 
 </script>
 
 <style scoped lang="scss">
 .order-container {
   display: flex;
-
-
-
-  .menu-list {
-    flex: 1
-  }
+  width: 100vw;
+  height: 100vh;
 }
 </style>

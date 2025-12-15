@@ -1,0 +1,67 @@
+<template>
+  <div class="menu-list-container">
+    <div class="menu-list-title">
+      {{ getSelectedCategoryName }}
+    </div>
+    <div class="menu-list">
+      <div
+        v-for="item, index in filterdData"
+        :key="`${item.category}-${index}`"
+        >
+          <MenuItem :item="item"/>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+import useCounterStore from '../store/menuData'
+import { storeToRefs } from 'pinia';
+import MenuItem from '@/components/MenuItem.vue';
+
+const { menuList} = useCounterStore()
+const { menuState } = storeToRefs(useCounterStore())
+
+const filterdData = computed(() => {
+    return (
+      menuList.find(
+        (menu) => menu.category === menuState.value
+      )?.item ?? []
+    )
+})
+
+const getSelectedCategoryName = computed(() => {
+    return (
+      menuList.find(
+        (menu) => menu.category === menuState.value
+      )?.name ?? ''
+    )
+})
+</script>
+
+<style scoped lang="scss">
+.menu-list-container {
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .menu-list-title {
+    margin-top: 1vh;
+    padding: 30px;
+    font-size: 40px;
+    font-family: 'NanumGothicEcoBold', sans-serif;
+  }
+
+  .menu-list {
+      overflow-y: scroll;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+  .menu-list-container::-webkit-scrollbar {
+    display: none;
+  }
+}
+</style>

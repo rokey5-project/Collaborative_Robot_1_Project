@@ -12,7 +12,10 @@
         />
     </div>
     <div class="menu-setting-container">
-      <div class="menu-setting-text">
+      <div class="menu-setting-icon-wrap">
+        <img src="../assets/setting.svg" alt="setting-icon" class="menu-setting-icon"/>
+      </div>
+      <div class="menu-setting-text" @click="goToAdminPage">
         관리자모드
       </div>
     </div>
@@ -20,19 +23,22 @@
 </template>
 
 <script setup lang="ts">
-import MenuButton from './MenuButton.vue'
+import router from '@/router';
+import MenuButton from '../components/MenuButton.vue'
 import palette from '../styles/colors'
 import useCounterStore from '../store/menuData'
-
 
 const { purple01 } = palette
 const { menuList, setMenuState } = useCounterStore()
 
+const goToAdminPage = () => {
+  router.push({ name: 'admin' });
+}
 </script>
 
 <style scoped lang="scss">
   .left-menu-bar {
-    width: 23vw;
+    width: 20vw;
     background-color: v-bind(purple01);
     height: 100vh;
     border-top-right-radius: 5vw;
@@ -56,7 +62,7 @@ const { menuList, setMenuState } = useCounterStore()
       display: flex;
       flex-direction: column;
       gap: 20px;
-      padding: 20px;
+      padding: 20px 0;
     }
 
     .menu-setting-container {
@@ -64,12 +70,24 @@ const { menuList, setMenuState } = useCounterStore()
       justify-content: center;
       align-items: center;
       background-color: #000;
-      height: 60px;
+      height: 70px;
       padding: 10px;
+      gap: 10px;
+
+      .menu-setting-icon-wrap {
+        width: 37px;
+        height: 37px;
+
+        .menu-setting-icon {
+          width: 100%;
+          height: 100%;
+        }
+      }
 
       .menu-setting-text {
         color: #fff;
         font-size: 32px;
+        font-family: 'NanumGothicEcoBold', sans-serif;
       }
     }
 
