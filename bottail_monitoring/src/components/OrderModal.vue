@@ -1,15 +1,43 @@
 <template>
   <el-dialog
     v-model="modalState"
-    title="주문 확인"
+    class="modal-container"
   >
-    <span>This is a message</span>
+    <div class="modal-title">
+      주문하시겠습니까??
+    </div>
+    <div class="modal-item-container">
+      <div class="modal-item-img-wrap">
+        <img
+          :src="orderItemInfo.image"
+          :alt="orderItemInfo.category"
+          class="modal-item-img"
+          />
+      </div>
+      <div class="modal-item-info">
+        <div class="modal-item-name-wrap">
+          <div class="modal-item-name-text">
+            {{ orderItemInfo.name }}
+          </div>
+        </div>
+        <div class="modal-item-price-wrap">
+          <div class="modal-item-price-text">
+            {{ getPriceText(orderItemInfo.price) }}
+          </div>
+        </div>
+        <div class="modal-item-desc-wrap">
+          <div class="modal-item-desc-text">
+            {{ orderItemInfo.description }}
+          </div>
+        </div>
+      </div>
+    </div>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="openCloseModal">
+        <el-button size="large" type="danger" @click="openCloseModal">
           취소
         </el-button>
-        <el-button type="primary" @click="openCloseModal">
+        <el-button size="large" type="primary" @click="openCloseModal">
           주문하기
         </el-button>
       </div>
@@ -19,9 +47,85 @@
 
 <script lang="ts" setup>
 import useCounterStore from '@/store/menuData';
+import palette from '../styles/colors'
 import { storeToRefs } from 'pinia';
 
-const { modalState } = storeToRefs(useCounterStore())
+const { modalState, orderItemInfo } = storeToRefs(useCounterStore())
 const { openCloseModal } = useCounterStore()
 
+const { gray01 } = palette
+
+const getPriceText = (price: number) => {
+  return `${price?.toLocaleString()}원`
+}
 </script>
+
+<style scoped lang="scss">
+  .modal-container {
+
+    .modal-title {
+      font-size: 32px;
+      margin-left: 20px;
+    }
+
+    .modal-item-container {
+      display: flex;
+      gap: 30px;
+      padding: 30px 30px 0 30px;
+
+      .modal-item-img-wrap {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .modal-item-img {
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+          border-radius: 10px;
+        }
+      }
+
+      .modal-item-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .modal-item-name-wrap {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+
+        .modal-item-name-text {
+          font-size: 36px;
+        }
+      }
+
+      .modal-item-price-wrap {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+
+        .modal-item-price-text {
+          font-size: 28px;
+        }
+      }
+
+      .modal-item-desc-wrap {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+
+        .modal-item-desc-text {
+          margin-top: 10px;
+          font-size: 18px;
+          color: v-bind(gray01);
+        }
+      }
+    }
+  }
+</style>

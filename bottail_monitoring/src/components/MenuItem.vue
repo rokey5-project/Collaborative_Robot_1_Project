@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-item-container" @click="openCloseModal">
+  <div class="menu-item-container" @click="clickItem">
     <div class="menu-item-image-wrap">
       <img
         :src="props.item.image"
@@ -34,9 +34,14 @@ const props = defineProps<{
   item: MenuItemType
 }>();
 
-const { openCloseModal } = useMenuStore()
+const { openCloseModal, setOrderItemInfo } = useMenuStore()
 
 const { gray01 } = palette
+
+const clickItem = () => {
+  setOrderItemInfo(props.item)
+  openCloseModal()
+}
 
 const getPriceText = (price: number) => {
   return `${price.toLocaleString()}원`

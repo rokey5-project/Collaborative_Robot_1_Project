@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { MenuDataType } from '@/types/menuDataType'
+import type { MenuDataType, MenuItemType } from '@/types/menuDataType'
 
 const useMenuStore = defineStore('menu', () => {
   const menuList: MenuDataType[] = [
@@ -226,7 +226,21 @@ const useMenuStore = defineStore('menu', () => {
     }
   }
 
-  return { menuList, menuState, setMenuState, modalState, openCloseModal }
+  const orderItemInfo = ref({} as MenuItemType)
+
+  const setOrderItemInfo = (data: MenuItemType) => {
+    orderItemInfo.value = data
+  }
+
+  return {
+    menuList,
+    menuState,
+    setMenuState,
+    modalState,
+    openCloseModal,
+    orderItemInfo,
+    setOrderItemInfo,
+  }
 })
 
 export default useMenuStore
