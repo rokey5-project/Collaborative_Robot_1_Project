@@ -50,6 +50,7 @@ import useCounterStore from '@/store/storeMenuData';
 import palette from '../styles/colors'
 import { storeToRefs } from 'pinia';
 import { ElMessage } from 'element-plus'
+import { publishOrderTopic } from '../utils/ros2Utils'
 
 const { modalState, orderItemInfo } = storeToRefs(useCounterStore())
 const { openCloseModal } = useCounterStore()
@@ -61,6 +62,7 @@ const getPriceText = (price: number) => {
 }
 
 const clickConfirmButton = () => {
+  publishOrderTopic('highball')
   ElMessage({
     message: '주문이 완료되었습니다.',
     type: 'success',
