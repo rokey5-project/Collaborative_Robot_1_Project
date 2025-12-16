@@ -39,6 +39,7 @@ const isSelectedMenu = () => {
   align-items: center;
   height: 45px;
   padding: 15px 20px;
+  cursor: pointer;
 
   .menu-text {
     color: #fff;

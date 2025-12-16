@@ -8,7 +8,10 @@
 </template>
 <script setup lang="ts">
 import AdminMenuBar from '@/containers/AdminMenuBar.vue';
+import { getDataBase } from '../utils/firebaseUtils'
 
+
+getDataBase('robot_status')
 </script>
 <style scoped lang="scss">
 .admin-container {

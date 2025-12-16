@@ -55,6 +55,7 @@ const getPriceText = (price: number) => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   .menu-item-image-wrap {
     width: 100%;

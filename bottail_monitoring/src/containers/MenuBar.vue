@@ -11,11 +11,11 @@
           @click="setMenuState(menu.category)"
         />
     </div>
-    <div class="menu-setting-container">
+    <div class="menu-setting-container" @click="goToLoginPage">
       <div class="menu-setting-icon-wrap">
         <img src="../assets/setting.svg" alt="setting-icon" class="menu-setting-icon"/>
       </div>
-      <div class="menu-setting-text" @click="goToLoginPage">
+      <div class="menu-setting-text">
         관리자모드
       </div>
     </div>
@@ -73,6 +73,7 @@ const goToLoginPage = () => {
       height: 70px;
       padding: 10px;
       gap: 10px;
+      cursor: pointer;
 
       .menu-setting-icon-wrap {
         width: 34px;
