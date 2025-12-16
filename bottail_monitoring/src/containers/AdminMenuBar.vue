@@ -35,8 +35,8 @@ const menuList: AdminMenuType[] = [
     category: 'orderDetails'
   },
   {
-    title: '재고관리',
-    category: 'inventory'
+    title: '통계',
+    category: 'statistics'
   },
   {
     title: '로봇관리',
