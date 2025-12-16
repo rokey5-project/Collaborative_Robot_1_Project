@@ -62,8 +62,8 @@ def put_shaker_seq():
     set_singular_handling(DR_AVOID)
     set_velj(60.0)
     set_accj(100.0)
-    set_velx(100.0, 68.25)
-    set_accx(80.0, 273.0)
+    set_velx(150.0, 68.25)
+    set_accx(100.0, 273.0)
 
     put_shaker()
     shaker_ungrip()

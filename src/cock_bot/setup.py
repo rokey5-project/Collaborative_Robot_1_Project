@@ -33,6 +33,8 @@ setup(
             'open_cap = cock_bot.g_twist_open_cap:main',
             'pour_drink = cock_bot.h_pour_drink:main',
             'cocktail_make = cock_bot.cocktail_orchestrator:main',
+            'cocktail_make_topic = cock_bot.cocktail_orchestrator_topic:main',
+            
         ],
     },
 )
