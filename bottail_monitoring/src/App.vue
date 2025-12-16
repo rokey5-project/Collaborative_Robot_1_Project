@@ -9,16 +9,23 @@ import { ref, onValue} from 'firebase/database'
 import { database } from '@/firebase'
 import useMenuStore from './store/storeMenuData';
 import { onMounted } from 'vue';
+import type { OrderDetailsType } from './types/menuDataType';
 
 const { setOrderDetailsList } = useMenuStore()
 
-const orderDetailsRef = ref(database, 'orderDetails')
+const subscribeDB = () => {
+  const orderDetailsRef = ref(database, 'orderDetails')
 
-const subscribeDB = onValue(orderDetailsRef, (snapshot) => {
-  const data = snapshot.val()
-  console.log('DB data', data)
-  setOrderDetailsList(data)
-})
+  if (orderDetailsRef) {
+    onValue(orderDetailsRef, (snapshot) => {
+    const data = snapshot.val()
+    const list:OrderDetailsType[] = data ? Object.values(data) : []
+    console.log('DB data', list)
+
+    setOrderDetailsList(list)
+    })
+  }
+}
 
 connectROS()
 

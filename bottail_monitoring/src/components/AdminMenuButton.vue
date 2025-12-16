@@ -40,7 +40,7 @@ const isSelectedMenu = () => {
 
   .admin-menu-text {
     color: #fff;
-    font-size: 28px;
+    font-size: 24px;
   }
 
   &.selected {

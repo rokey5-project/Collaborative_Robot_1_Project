@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ref, get, set, update, push } from 'firebase/database'
 import { database } from '@/firebase'
-import type { MenuItemType } from '@/types/menuDataType'
 
 //데이터 읽기
 export const getDataBase = async (path: string) => {
@@ -21,7 +20,7 @@ export const setDataBase = async (path: string, data: any) => {
 }
 
 // 기존 데이터에 데이터 추가
-export const pushDataBase = async (path: string, data: MenuItemType) => {
+export const pushDataBase = async (path: string, data: any) => {
   const orderDetailsRef = ref(database, path)
 
   push(orderDetailsRef, data)
