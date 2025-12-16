@@ -4,7 +4,7 @@ import { getDatabase } from 'firebase/database'
 const firebaseConfig = {
   apiKey: 'AIzaSyBRn3SRzqoOCIsBE9eJBe8RZjuUOCNK-Xw',
   authDomain: 'bottail.firebaseapp.com',
-  databaseURL: 'https://bottail-default-rtdb.asia-southeast1.firebasedatabase.app',
+  databaseURL: 'https://bottail-default-rtdb.asia-southeast1.firebasedatabase.app/',
   projectId: 'bottail',
   storageBucket: 'bottail.firebasestorage.app',
   messagingSenderId: '35087707272',

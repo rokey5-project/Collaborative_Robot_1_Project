@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, type Ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { MenuDataType, MenuItemType } from '@/types/menuDataType'
 
@@ -238,6 +238,13 @@ const useMenuStore = defineStore('menu', () => {
     adminMenuState.value = category
   }
 
+  const orderDetailsList:Ref<MenuItemType[]> = ref([])
+
+  const setOrderDetailsList = (data: MenuItemType[]) => {
+    orderDetailsList.value = data
+  }
+
+
   return {
     menuList,
     menuState,
@@ -248,6 +255,7 @@ const useMenuStore = defineStore('menu', () => {
     setOrderItemInfo,
     adminMenuState,
     setAdminMenuState,
+    setOrderDetailsList
   }
 })
 

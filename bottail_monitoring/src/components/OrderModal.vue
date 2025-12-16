@@ -51,6 +51,8 @@ import palette from '../styles/colors'
 import { storeToRefs } from 'pinia';
 import { ElMessage } from 'element-plus'
 import { publishOrderTopic } from '../utils/ros2Utils'
+import { setDataBase, pushDataBase } from '../utils/firebaseUtils'
+import { getNowDate } from '../utils/dateUtils'
 
 const { modalState, orderItemInfo } = storeToRefs(useCounterStore())
 const { openCloseModal } = useCounterStore()
@@ -62,7 +64,17 @@ const getPriceText = (price: number) => {
 }
 
 const clickConfirmButton = () => {
-  publishOrderTopic('highball')
+  // topic 발행
+  // publishOrderTopic('data:highball')
+
+  setDataBase('orderDetails', [])
+  // DB 저장
+  // pushDataBase('orderDetails', {
+  //   name: orderItemInfo.value.name,
+  //   price: orderItemInfo.value.price,
+  //   time: getNowDate()
+  // })
+
   ElMessage({
     message: '주문이 완료되었습니다.',
     type: 'success',
