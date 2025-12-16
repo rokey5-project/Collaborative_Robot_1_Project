@@ -40,7 +40,7 @@ const menuList: AdminMenuType[] = [
   },
   {
     title: '로봇관리',
-    category: 'robot'
+    category: 'setting'
   },
 ]
 

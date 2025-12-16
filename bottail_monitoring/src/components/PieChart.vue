@@ -1,6 +1,6 @@
 <template>
   <el-card class="pie-chart">
-    <Pie :data="data"/>
+    <Pie :data="data" :options="options"/>
     <template #footer>
       <div class="card-header">
         <span>주종별 판매 비율</span>
@@ -71,8 +71,15 @@ const data = {
       'rgb(255, 159, 64)'
     ],
   }],
-  Legend: {
-    position: 'bottom'
+}
+
+const options = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      position: 'right' as const
+    }
   }
 }
 

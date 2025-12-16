@@ -1,10 +1,15 @@
 <template>
   <div class="order-chart-container">
-    <PieChart/>
-    <BarChartTodaySales/>
-    <BarChartSales/>
-    <LineChartSales/>
-    <LineChartPrice/>
+    <div class="setting-robot-title">
+      데이터 통계
+    </div>
+    <div class="order-chart-body">
+      <PieChart/>
+      <BarChartTodaySales/>
+      <BarChartSales/>
+      <LineChartSales/>
+      <LineChartPrice/>
+    </div>
   </div>
 </template>
 
@@ -19,12 +24,24 @@ import BarChartTodaySales from '@/components/BarChartTodaySales.vue';
 
 <style scoped lang="scss">
 .order-chart-container {
-  width: 100%;
-  padding: 30px;
   flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 10px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-sizing: border-box;
+
+  .setting-robot-title {
+    font-size: 32px;
+    font-family: 'NanumGothicEcoBold', sans-serif;
+  }
+
+  .order-chart-body {
+    height: 650px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+  }
 }
 </style>

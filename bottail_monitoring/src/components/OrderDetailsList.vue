@@ -44,7 +44,7 @@ const pagedList = computed(() => {
 
 <style scoped lang="scss">
 .order-details-container {
-  padding: 50px;
+  padding: 30px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
