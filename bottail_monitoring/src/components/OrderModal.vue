@@ -50,8 +50,8 @@ import useCounterStore from '@/store/storeMenuData';
 import palette from '../styles/colors'
 import { storeToRefs } from 'pinia';
 import { ElMessage } from 'element-plus'
-import { publishOrderTopic } from '../utils/ros2Utils'
-import { pushDataBase } from '../utils/firebaseUtils'
+import { publishTopic } from '../composable/useRobot'
+import { pushDataBase } from '../composable/useFirebase'
 import { getNowDate } from '../utils/dateUtils'
 
 const { menuState, modalState, orderItemInfo } = storeToRefs(useCounterStore())
@@ -65,7 +65,7 @@ const getPriceText = (price: number) => {
 
 const clickConfirmButton = () => {
   // topic 발행
-  publishOrderTopic('data:highball')
+  publishTopic('data:highball')
 
   // DB 저장
   pushDataBase('orderDetails', {
