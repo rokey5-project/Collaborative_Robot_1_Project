@@ -67,7 +67,8 @@ const subscribeTopicConfigs: TopicConfig[] = [
     messageType: 'sensor_msgs/JointState',
     handler: (msg) => {
       console.log(radiansToDegrees(msg.position))
-      robotState.joint.deg = msg.position.map((r: number) => +((r * 180) / Math.PI).toFixed(3)) ?? []
+      robotState.joint.deg =
+        msg.position.map((r: number) => +((r * 180) / Math.PI).toFixed(3)) ?? []
       robotState.joint.vel = msg.velocity.map((r: number) => r.toFixed(3)) ?? []
       robotState.joint.effort = msg.effort ?? []
     },
@@ -104,12 +105,55 @@ const subscribeRobotState = () => {
   })
 }
 
+// 조인트 순서 정렬
+const normalizeJointData = (
+  joint_name: string[],
+  joint: {
+    deg: number[]
+    vel: number[]
+    effort: number[]
+  },
+) => {
+  const map = new Map<
+    string,
+    {
+      deg: number
+      vel: number
+      effort: number
+    }
+  >()
+
+  joint_name.forEach((name, i) => {
+    map.set(name, {
+      deg: joint.deg[i] ?? 0,
+      vel: joint.vel[i] ?? 0,
+      effort: joint.effort[i] ?? 0,
+    })
+  })
+
+  return {
+    deg: DSR_JOINT_ORDER.map((j) => map.get(j)?.deg ?? 0),
+    vel: DSR_JOINT_ORDER.map((j) => map.get(j)?.vel ?? 0),
+    effort: DSR_JOINT_ORDER.map((j) => map.get(j)?.effort ?? 0),
+  }
+}
+
+const DSR_JOINT_ORDER = ['joint_1', 'joint_2', 'joint_3', 'joint_4', 'joint_5', 'joint_6']
+
+const buildRobotStatePayload = () => {
+  const normalizedJoint = normalizeJointData(DSR_JOINT_ORDER, robotState.joint)
+
+  return {
+    joint: normalizedJoint, // J1~J6 순서 보장
+    tcp: robotState.tcp,
+    system: robotState.system,
+    timestamp: Date.now(),
+  }
+}
+
 // robotState DB에 저장
 const writeRobotStateToDB = throttle(() => {
-  setDataBase('robotStatus', {
-    ...robotState,
-    timestamp: Date.now(),
-  })
+  setDataBase('robotStatus', buildRobotStatePayload())
 }, 200)
 
 // moveL 동작
