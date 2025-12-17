@@ -33,8 +33,10 @@ setup(
             'open_cap = cock_bot.g_twist_open_cap:main',
             'pour_drink = cock_bot.h_pour_drink:main',
             'cocktail_make = cock_bot.cocktail_orchestrator:main',
-            'cocktail_make_topic = cock_bot.cocktail_orchestrator_topic:main',
-            
+            'state_check = cock_bot.robot_state_checker:main',
+            'spoon_spin_node = cock_bot.i_spoon:main',
+            'robot_recovery_auto = cock_bot.robot_recovery_auto:main',
+            'home = cock_bot.homepose:main'
         ],
     },
 )

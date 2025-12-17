@@ -52,6 +52,9 @@ def shaker_ungrip():
     set_digital_output(2, 1)
     wait(0.5)
 
+def cocktail_sequence():
+    from DSR_ROBOT2 import set_singular_handling, set_velj, set_ac
+
 def get_shaker():
     from DSR_ROBOT2 import movej, movel, posj, posx
 

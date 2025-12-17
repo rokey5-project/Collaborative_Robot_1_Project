@@ -86,7 +86,7 @@ def move_and_pour_drink():
 
     # MoveLNode (REL) – approach pour position
     movel(
-        posx(0.00, 120.00, 0.00, 0.00, 0.00, 0.00),
+        posx(0.00, 105.00, 0.00, 0.00, 0.00, 0.00),
         vel=VEL_L,
         acc=ACC_L,
         ref=0,
@@ -96,7 +96,7 @@ def move_and_pour_drink():
 
     # AMoveJNode (REL) – rotate wrist for pouring
     amovej(
-        posj(0.00, 0.00, 0.00, 0.00, 0.00, -120.00),
+        posj(0.00, 0.00, 0.00, 0.00, 0.00, -95.00),
         mod=1
     )
 
@@ -125,7 +125,7 @@ def move_back_shaker_point():
 
     # MoveJNode (REL) – rotate back
     movej(
-        posj(0.00, 0.00, 0.00, 0.00, 0.00, 120.00),
+        posj(0.00, 0.00, 0.00, 0.00, 0.00, 95.00),
         vel=VEL_J,
         acc=ACC_J,
         mod=1
@@ -133,7 +133,7 @@ def move_back_shaker_point():
 
     # MoveLNode (REL) – retreat from pour position
     movel(
-        posx(0.00, -120.00, 0.00, 0.00, 0.00, 0.00),
+        posx(0.00, -105.00, 0.00, 0.00, 0.00, 0.00),
         vel=VEL_L,
         acc=ACC_L,
         ref=0,
