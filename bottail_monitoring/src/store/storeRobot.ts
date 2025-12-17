@@ -14,7 +14,7 @@ const useRobotStore = defineStore('robot', () => {
       pos: [0, 0, 0, 0, 0, 0],
     },
     system: {
-      state: '',
+      state: 'null',
     },
     timestamp: 0,
   })

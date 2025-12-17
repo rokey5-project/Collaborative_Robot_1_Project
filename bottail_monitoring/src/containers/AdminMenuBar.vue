@@ -6,10 +6,10 @@
     <div class="admin-menu-list-container">
       <div>
         <AdminMenuButton
-        v-for="menu in menuList"
-        :key="menu.category"
-        :data="menu"
-        @click="clickAdminMenu(menu.category)"
+          v-for="menu in menuList"
+          :key="menu.category"
+          :data="menu"
+          @click="clickAdminMenu(menu.category)"
         />
       </div>
       <div class="admin-menu-back-button" @click="goBackOrderPage">
@@ -86,7 +86,7 @@ const goBackOrderPage = () => {
   }
 
   .admin-menu-back-button {
-    font-size: 24px;
+    font-size: 22px;
     color: #fff;
     padding: 20px 10px;
     text-align: center;

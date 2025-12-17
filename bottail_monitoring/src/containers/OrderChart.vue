@@ -32,7 +32,7 @@ import BarChartTodaySales from '@/components/BarChartTodaySales.vue';
   box-sizing: border-box;
 
   .setting-robot-title {
-    font-size: 32px;
+    font-size: 28px;
     font-family: 'NanumGothicEcoBold', sans-serif;
   }
 

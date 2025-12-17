@@ -52,7 +52,7 @@ const pagedList = computed(() => {
   flex: 1;
 
   .order-details-title {
-    font-size: 32px;
+    font-size: 28px;
     font-family: 'NanumGothicEcoBold', sans-serif;
   }
 
@@ -66,6 +66,7 @@ const pagedList = computed(() => {
       width: 100%;
       display: flex;
       justify-content: center;
+      margin-bottom: 30px;
     }
   }
 }

@@ -57,6 +57,7 @@ const robotState = reactive<RobotState>({
   system: {
     state: 'UNKNOWN',
   },
+  timestamp: 0,
 })
 
 // robotState 토픽 config
