@@ -5,11 +5,12 @@ export type RobotState = {
     effort: number[]
   }
   tcp: {
-    pos: number[] // [x, y, z, rx, ry, rz]
+    pos: number[]
   }
   system: {
     state: string
   }
+  timestamp: number
 }
 
 export type TopicConfig = {

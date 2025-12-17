@@ -26,11 +26,11 @@
 </template>
 
 <script setup lang="ts">
-import useMenuStore from '@/store/storeMenuData';
+import useOrderDetail from '@/store/storeOrderDetails'
 import { storeToRefs } from 'pinia';
 import { computed, ref } from 'vue';
 
-const { orderDetailsList } = storeToRefs(useMenuStore())
+const { orderDetailsList } = storeToRefs(useOrderDetail())
 const currentPage = ref(1)
 const pageSize = ref(10)
 

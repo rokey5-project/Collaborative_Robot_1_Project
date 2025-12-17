@@ -2,21 +2,31 @@
 import { ref, onValue, get, set, push, update } from 'firebase/database'
 import { database } from '@/firebase'
 import type { OrderDetailsType } from '../types/menuDataType'
-import useMenuStore from '../store/storeMenuData'
+import useOrderDetail from '@/store/storeOrderDetails'
+import useRobotStore from '@/store/storeRobot'
 
-const { setOrderDetailsList } = useMenuStore()
-
-// 주문 내역 저장 (DB 변동이 생길때마다 동작)
+// DB 변동이 생길때마다 저장
 const subscribeDB = () => {
   const orderDetailsRef = ref(database, 'orderDetails')
+  const robotStateRef = ref(database, 'robotStatus')
+
+  const { setOrderDetailsList } = useOrderDetail()
+  const { setRobotState } = useRobotStore()
 
   if (orderDetailsRef) {
     onValue(orderDetailsRef, (snapshot) => {
       const data = snapshot.val()
       const list: OrderDetailsType[] = data ? Object.values(data) : []
-      console.log('DB data', list)
-
+      console.log('주문내역', list)
       setOrderDetailsList(list)
+    })
+  }
+
+  if (robotStateRef) {
+    onValue(robotStateRef, (snapshot) => {
+      const data = snapshot.val()
+      console.log('로봇상태', data)
+      setRobotState(data)
     })
   }
 }

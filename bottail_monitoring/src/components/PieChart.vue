@@ -18,7 +18,7 @@ import {
   Legend,
   ArcElement
 } from 'chart.js'
-import useMenuStore from '@/store/storeMenuData';
+import useOrderDetail from '@/store/storeOrderDetails'
 import { storeToRefs } from 'pinia';
 import type { OrderDetailsType } from '@/types/menuDataType';
 
@@ -28,7 +28,7 @@ ChartJS.register(
   Legend,
   ArcElement
 )
-const { orderDetailsList } = storeToRefs(useMenuStore())
+const { orderDetailsList } = storeToRefs(useOrderDetail())
 
 function getCategoryAndCountArrays(
   orderList: OrderDetailsType[]

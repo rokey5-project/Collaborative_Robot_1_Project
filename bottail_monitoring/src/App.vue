@@ -9,12 +9,10 @@ import { onMounted } from 'vue';
 import { subscribeDB } from './composable/useFirebase';
 
 
-connectROS()
-
-
 onMounted(() => {
-  subscribeDB()
-  subscribeRobotState()
+  connectROS() // ROS 연결
+  subscribeDB() // DB 구독
+  subscribeRobotState() // robot state DB 저장
 })
 </script>
 

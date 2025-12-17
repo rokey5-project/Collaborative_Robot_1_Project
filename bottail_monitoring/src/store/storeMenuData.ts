@@ -1,8 +1,9 @@
-import { ref, type Ref } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { MenuDataType, MenuItemType, OrderDetailsType } from '@/types/menuDataType'
+import type { MenuDataType, MenuItemType } from '@/types/menuDataType'
 
 const useMenuStore = defineStore('menu', () => {
+  // 메뉴 정보
   const menuList: MenuDataType[] = [
     {
       category: 'whisky',
@@ -212,50 +213,32 @@ const useMenuStore = defineStore('menu', () => {
     },
   ]
 
+  // 메뉴판 버튼 클릭 상태
   const menuState = ref('whisky')
   const setMenuState = (category: string) => {
     menuState.value = category
   }
 
-  const modalState = ref(false)
-  const openCloseModal = () => {
-    if (modalState.value) {
-      modalState.value = false
-    } else {
-      modalState.value = true
-    }
-  }
-
-  const orderItemInfo = ref({} as MenuItemType)
-
-  const setOrderItemInfo = (data: MenuItemType) => {
-    orderItemInfo.value = data
-  }
-
+  // 어드민 페이지 버튼 클릭 상태
   const adminMenuState = ref('orderDetails')
-
   const setAdminMenuState = (category: string) => {
     adminMenuState.value = category
   }
 
-  const orderDetailsList: Ref<OrderDetailsType[]> = ref([])
-
-  const setOrderDetailsList = (data: OrderDetailsType[]) => {
-    orderDetailsList.value = data
+  // 주문하려는 아이템 정보
+  const orderItemInfo = ref({} as MenuItemType)
+  const setOrderItemInfo = (data: MenuItemType) => {
+    orderItemInfo.value = data
   }
 
   return {
     menuList,
     menuState,
     setMenuState,
-    modalState,
-    openCloseModal,
     orderItemInfo,
     setOrderItemInfo,
     adminMenuState,
     setAdminMenuState,
-    orderDetailsList,
-    setOrderDetailsList,
   }
 })
 

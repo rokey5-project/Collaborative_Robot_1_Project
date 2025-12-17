@@ -21,7 +21,7 @@ import {
   CategoryScale,
   LinearScale
 } from 'chart.js'
-import useMenuStore from '@/store/storeMenuData'
+import useOrderDetail from '@/store/storeOrderDetails'
 import { storeToRefs } from 'pinia'
 import type { OrderDetailsType } from '@/types/menuDataType'
 
@@ -35,7 +35,7 @@ ChartJS.register(
   LinearScale
 )
 
-const { orderDetailsList } = storeToRefs(useMenuStore())
+const { orderDetailsList } = storeToRefs(useOrderDetail())
 
 /**
  * 오늘 기준 최근 7일 날짜 배열 생성 (YYYY-MM-DD)

@@ -24,3 +24,14 @@ export const throttle = <T extends (...args: any[]) => void>(fn: T, delay: numbe
     }
   } as T
 }
+
+export const formatTimestamp = (timestamp: number): string => {
+  return new Date(timestamp).toLocaleString('ko-KR', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  })
+}

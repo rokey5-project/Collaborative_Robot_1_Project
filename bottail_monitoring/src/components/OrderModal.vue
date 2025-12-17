@@ -46,16 +46,18 @@
 </template>
 
 <script lang="ts" setup>
-import useCounterStore from '@/store/storeMenuData';
-import palette from '../styles/colors'
+import useMenuStore from '@/store/storeMenuData';
+import palette from '@/styles/colors'
 import { storeToRefs } from 'pinia';
 import { ElMessage } from 'element-plus'
-import { publishTopic } from '../composable/useRobot'
-import { pushDataBase } from '../composable/useFirebase'
-import { getNowDate } from '../utils/dateUtils'
+import { publishTopic } from '@/composable/useRobot'
+import { pushDataBase } from '@/composable/useFirebase'
+import { getNowDate } from '@/utils/dateUtils'
+import useModalStore from '@/store/storeModal';
 
-const { menuState, modalState, orderItemInfo } = storeToRefs(useCounterStore())
-const { openCloseModal } = useCounterStore()
+const { menuState, orderItemInfo } = storeToRefs(useMenuStore())
+const { modalState } = storeToRefs(useModalStore())
+const { openCloseModal } = useModalStore()
 
 const { gray01 } = palette
 

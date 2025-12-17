@@ -26,7 +26,6 @@ import useMenuStore from '@/store/storeMenuData';
 import router from '@/router';
 import { ElMessageBox } from 'element-plus'
 
-
 const { black01 } = palette
 const { setAdminMenuState } = useMenuStore()
 const menuList: AdminMenuType[] = [
