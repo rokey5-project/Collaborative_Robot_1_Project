@@ -67,7 +67,7 @@ const getPriceText = (price: number) => {
 
 const clickConfirmButton = () => {
   // topic 발행
-  publishTopic('data:highball')
+  publishTopic("order:mojito")
 
   // DB 저장
   pushDataBase('orderDetails', {

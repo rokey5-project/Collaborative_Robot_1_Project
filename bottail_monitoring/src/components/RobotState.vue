@@ -79,8 +79,8 @@
         <div class="robot-joint-card-body">
           <span>J3 :</span>
           <div class="robot-joint-item">
-            <span>{{ robotState?.joint?.deg[2] }} deg</span>
-            <span>{{ robotState?.joint?.vel[2] }} mm/s</span>
+            <span>{{ robotState?.joint?.deg[4] }} deg</span>
+            <span>{{ robotState?.joint?.vel[4] }} mm/s</span>
           </div>
         </div>
         <div class="robot-joint-card-body">
@@ -93,8 +93,8 @@
         <div class="robot-joint-card-body">
           <span>J5 :</span>
           <div class="robot-joint-item">
-            <span>{{ robotState?.joint?.deg[4] }} deg</span>
-            <span>{{ robotState?.joint?.vel[4] }} mm/s</span>
+            <span>{{ robotState?.joint?.deg[2] }} deg</span>
+            <span>{{ robotState?.joint?.vel[2] }} mm/s</span>
           </div>
         </div>
         <div class="robot-joint-card-body">

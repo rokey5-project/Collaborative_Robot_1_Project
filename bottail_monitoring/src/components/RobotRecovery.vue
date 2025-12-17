@@ -8,7 +8,7 @@
           type="danger"
           size="large"
           :icon="VideoPause"
-          @click="publishTopic('data:\'pause\'')"
+          @click="publishTopic('pause')"
         >
           정지하기
         </el-button>
@@ -20,7 +20,7 @@
           type="success"
           size="large"
           :icon="VideoPlay"
-          @click="publishTopic('data:\'resume\'')"
+          @click="publishTopic('resume')"
         >
           재개하기
       </el-button>
@@ -32,7 +32,7 @@
           type="warning"
           size="large"
           :icon="RefreshRight"
-          @click="publishTopic('data:\'recover\'')"
+          @click="publishTopic('recover')"
         >
           복구하기
         </el-button>

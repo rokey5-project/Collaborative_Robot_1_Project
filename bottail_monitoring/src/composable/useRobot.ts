@@ -5,7 +5,7 @@ import type { RobotState, TopicConfig } from '@/types/robotType'
 import { throttle } from '@/utils/dateUtils'
 import { setDataBase } from './useFirebase'
 import { watch } from 'vue'
-
+import { radiansToDegrees } from '@/utils/mathUtils'
 const ros = new ROSLIB.Ros({
   url: 'ws://localhost:9090',
 })
@@ -66,6 +66,7 @@ const subscribeTopicConfigs: TopicConfig[] = [
     name: '/dsr01/joint_states',
     messageType: 'sensor_msgs/JointState',
     handler: (msg) => {
+      console.log(radiansToDegrees(msg.position))
       robotState.joint.deg = msg.position.map((r: number) => +((r * 180) / Math.PI).toFixed(3)) ?? []
       robotState.joint.vel = msg.velocity.map((r: number) => r.toFixed(3)) ?? []
       robotState.joint.effort = msg.effort ?? []

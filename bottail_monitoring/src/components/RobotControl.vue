@@ -123,6 +123,7 @@ import useRobotStore from '@/store/storeRobot';
 import { storeToRefs } from 'pinia';
 import { onMounted, reactive } from 'vue';
 import { movel, movej } from '@/composable/useRobot'
+import { degreeToRadians } from '@/utils/mathUtils'
 
 const { robotState } = storeToRefs(useRobotStore())
 
