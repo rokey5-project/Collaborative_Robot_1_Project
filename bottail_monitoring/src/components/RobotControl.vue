@@ -135,8 +135,8 @@ const moveState = reactive({
 })
 
 onMounted(() => {
-  moveState.pos = robotState.value.tcp.pos
-  moveState.joint = robotState.value.joint.deg
+  moveState.pos = robotState.value?.tcp?.pos ?? [0, 0, 0, 0, 0, 0]
+  moveState.joint = robotState.value?.joint?.deg ?? [0, 0, 0, 0, 0, 0]
 })
 </script>
 

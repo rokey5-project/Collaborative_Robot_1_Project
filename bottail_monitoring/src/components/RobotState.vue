@@ -9,11 +9,11 @@
         <div class="robot-state-card">
           <div class="robot-state-card-body">
             <span>상태 :</span>
-            <el-tag size="large">{{ robotState.system.state }}</el-tag>
+            <el-tag size="large">{{ robotState?.system?.state }}</el-tag>
           </div>
           <div class="robot-state-card-body">
             <span>시간 :</span>
-            <span>{{ formatTimestamp(robotState.timestamp) }}</span>
+            <span>{{ formatTimestamp(robotState?.timestamp) }}</span>
           </div>
         </div>
     </el-card>
@@ -27,30 +27,30 @@
         <div class="robot-tcp-card-body">
           <div class="robot-tcp-card-item">
             <span>X :</span>
-            <span>{{ robotState.tcp.pos[0] }} mm</span>
+            <span>{{ robotState?.tcp?.pos[0] }} mm</span>
           </div>
           <div class="robot-tcp-card-item">
             <span>Y :</span>
-            <span>{{ robotState.tcp.pos[1] }} mm</span>
+            <span>{{ robotState?.tcp?.pos[1] }} mm</span>
           </div>
           <div class="robot-tcp-card-item">
             <span>Z :</span>
-            <span>{{ robotState.tcp.pos[2] }} mm</span>
+            <span>{{ robotState?.tcp?.pos[2] }} mm</span>
           </div>
         </div>
         <el-divider />
         <div class="robot-tcp-card-body">
           <div class="robot-tcp-card-item">
             <span>A :</span>
-            <span>{{ robotState.tcp.pos[3] }} deg</span>
+            <span>{{ robotState?.tcp?.pos[3] }} deg</span>
           </div>
           <div class="robot-tcp-card-item">
             <span>B :</span>
-            <span>{{ robotState.tcp.pos[4] }} deg</span>
+            <span>{{ robotState?.tcp?.pos[4] }} deg</span>
           </div>
           <div class="robot-tcp-card-item">
             <span>C :</span>
-            <span>{{ robotState.tcp.pos[5] }} deg</span>
+            <span>{{ robotState?.tcp?.pos[5] }} deg</span>
           </div>
         </div>
       </div>
@@ -65,43 +65,43 @@
         <div class="robot-joint-card-body">
           <span>J1 :</span>
           <div class="robot-joint-item">
-            <span>{{ robotState.joint.deg[0] }} deg</span>
-            <span>{{ robotState.joint.vel[0] }} mm/s</span>
+            <span>{{ robotState?.joint?.deg[0] }} deg</span>
+            <span>{{ robotState?.joint?.vel[0] }} mm/s</span>
           </div>
         </div>
         <div class="robot-joint-card-body">
           <span>J2 :</span>
           <div class="robot-joint-item">
-            <span>{{ robotState.joint.deg[1] }} deg</span>
-            <span>{{ robotState.joint.vel[1] }} mm/s</span>
+            <span>{{ robotState?.joint?.deg[1] }} deg</span>
+            <span>{{ robotState?.joint?.vel[1] }} mm/s</span>
           </div>
         </div>
         <div class="robot-joint-card-body">
           <span>J3 :</span>
           <div class="robot-joint-item">
-            <span>{{ robotState.joint.deg[2] }} deg</span>
-            <span>{{ robotState.joint.vel[2] }} mm/s</span>
+            <span>{{ robotState?.joint?.deg[2] }} deg</span>
+            <span>{{ robotState?.joint?.vel[2] }} mm/s</span>
           </div>
         </div>
         <div class="robot-joint-card-body">
           <span>J4 :</span>
           <div class="robot-joint-item">
-            <span>{{ robotState.joint.deg[3] }} deg</span>
-            <span>{{ robotState.joint.vel[3] }} mm/s</span>
+            <span>{{ robotState?.joint?.deg[3] }} deg</span>
+            <span>{{ robotState?.joint?.vel[3] }} mm/s</span>
           </div>
         </div>
         <div class="robot-joint-card-body">
           <span>J5 :</span>
           <div class="robot-joint-item">
-            <span>{{ robotState.joint.deg[4] }} deg</span>
-            <span>{{ robotState.joint.vel[4] }} mm/s</span>
+            <span>{{ robotState?.joint?.deg[4] }} deg</span>
+            <span>{{ robotState?.joint?.vel[4] }} mm/s</span>
           </div>
         </div>
         <div class="robot-joint-card-body">
           <span>J6 :</span>
           <div class="robot-joint-item">
-            <span>{{ robotState.joint.deg[5] }} deg</span>
-            <span>{{ robotState.joint.vel[5] }} mm/s</span>
+            <span>{{ robotState?.joint?.deg[5] }} deg</span>
+            <span>{{ robotState?.joint?.vel[5] }} mm/s</span>
           </div>
         </div>
       </div>
@@ -167,8 +167,9 @@ const { robotState } = storeToRefs(useRobotStore())
       gap: 10px;
 
       .robot-joint-item {
-        display: flex;
-        gap: 30px;
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
       }
     }
   }

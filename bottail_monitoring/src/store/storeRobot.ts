@@ -7,7 +7,7 @@ const useRobotStore = defineStore('robot', () => {
   const robotState = ref({
     joint: {
       deg: [0, 0, 0, 0, 0, 0],
-      vel: [0, 0, 0, 0, 0, 0],
+      vel: [0.000, 0.000, 0.000, 0.000, 0.000, 0.000],
       effort: [0, 0, 0, 0, 0, 0],
     },
     tcp: {

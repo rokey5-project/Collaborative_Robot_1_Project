@@ -17,7 +17,7 @@ const subscribeDB = () => {
     onValue(orderDetailsRef, (snapshot) => {
       const data = snapshot.val()
       const list: OrderDetailsType[] = data ? Object.values(data) : []
-      console.log('주문내역', list)
+      // console.log('주문내역', list)
       setOrderDetailsList(list)
     })
   }
@@ -25,7 +25,7 @@ const subscribeDB = () => {
   if (robotStateRef) {
     onValue(robotStateRef, (snapshot) => {
       const data = snapshot.val()
-      console.log('로봇상태', data)
+      // console.log('로봇상태', data)
       setRobotState(data)
     })
   }

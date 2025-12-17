@@ -66,14 +66,14 @@ const subscribeTopicConfigs: TopicConfig[] = [
     name: '/dsr01/joint_states',
     messageType: 'sensor_msgs/JointState',
     handler: (msg) => {
-      robotState.joint.deg = msg.position.map((r: number) => +((r * 180) / Math.PI).toFixed(3))
-      robotState.joint.vel = msg.velocity ?? []
+      robotState.joint.deg = msg.position.map((r: number) => +((r * 180) / Math.PI).toFixed(3)) ?? []
+      robotState.joint.vel = msg.velocity.map((r: number) => r.toFixed(3)) ?? []
       robotState.joint.effort = msg.effort ?? []
     },
   },
 
   {
-    name: '/dsr01/robot_state',
+    name: '/dsr01/cocktail/status',
     messageType: 'dsr_msgs/RobotState',
     handler: (msg) => {
       robotState.system.state = msg.robot_state
@@ -105,7 +105,7 @@ const subscribeRobotState = () => {
 
 // robotState DB에 저장
 const writeRobotStateToDB = throttle(() => {
-  setDataBase('robot_status', {
+  setDataBase('robotStatus', {
     ...robotState,
     timestamp: Date.now(),
   })
@@ -115,7 +115,7 @@ const writeRobotStateToDB = throttle(() => {
 const movel = (pos: number[], vel: number, acc: number, ref: number = 0) => {
   const service = new ROSLIB.Service({
     ros,
-    name: '/dsr/movel',
+    name: '/dsr01/motion/move_line',
     serviceType: 'dsr_msgs/MoveLine',
   })
 
@@ -132,7 +132,7 @@ const movel = (pos: number[], vel: number, acc: number, ref: number = 0) => {
 const movej = (pos: number[], vel: number, acc: number) => {
   const service = new ROSLIB.Service({
     ros,
-    name: '/dsr/movej',
+    name: '/dsr01/motion/move_joint',
     serviceType: 'dsr_msgs/MoveJoint',
   })
 
