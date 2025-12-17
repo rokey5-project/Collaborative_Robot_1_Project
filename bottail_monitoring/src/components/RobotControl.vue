@@ -14,7 +14,7 @@
           </div>
           <div class="robot-control-slider">
             <span>joint 2 (deg)</span>
-            <el-slider v-model="moveState.joint[1]" :min="-120" :max="-120" show-input />
+            <el-slider v-model="moveState.joint[1]" :min="-120" :max="120" show-input />
           </div>
           <div class="robot-control-slider">
             <span>joint 3 (deg)</span>
@@ -121,20 +121,23 @@
 <script setup lang="ts">
 import useRobotStore from '@/store/storeRobot';
 import { storeToRefs } from 'pinia';
-import { reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 import { movel, movej } from '@/composable/useRobot'
 
 const { robotState } = storeToRefs(useRobotStore())
 
 const moveState = reactive({
-  pos: robotState.value.tcp.pos,
-  joint: robotState.value.joint.deg,
+  pos: [0, 0, 0, 0, 0, 0],
+  joint: [0, 0, 0, 0, 0, 0],
   vel: 60,
   acc: 60,
   ref: 0
 })
 
-
+onMounted(() => {
+  moveState.pos = robotState.value.tcp.pos
+  moveState.joint = robotState.value.joint.deg
+})
 </script>
 
 <style scoped lang="scss">
