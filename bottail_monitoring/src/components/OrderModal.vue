@@ -67,7 +67,12 @@ const getPriceText = (price: number) => {
 
 const clickConfirmButton = () => {
   // topic 발행
-  publishTopic("order:mojito")
+
+  if(menuState.value === 'whisky' || menuState.value === 'vodka' || menuState.value === 'liqueur') {
+    publishTopic("order:highball")
+  }else {
+    publishTopic("order:mojito")
+  }
 
   // DB 저장
   pushDataBase('orderDetails', {

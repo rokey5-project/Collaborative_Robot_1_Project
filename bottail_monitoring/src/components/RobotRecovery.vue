@@ -8,7 +8,7 @@
           type="danger"
           size="large"
           :icon="VideoPause"
-          @click="publishTopic('pause')"
+          @click="clickButton('pause')"
         >
           정지하기
         </el-button>
@@ -20,7 +20,7 @@
           type="success"
           size="large"
           :icon="VideoPlay"
-          @click="publishTopic('resume')"
+          @click="clickButton('resume')"
         >
           재개하기
       </el-button>
@@ -32,7 +32,7 @@
           type="warning"
           size="large"
           :icon="RefreshRight"
-          @click="publishTopic('recover')"
+          @click="clickButton('recover')"
         >
           복구하기
         </el-button>
@@ -56,8 +56,24 @@
 import { VideoPause, VideoPlay, RefreshRight, Sort } from '@element-plus/icons-vue'
 import palette from '@/styles/colors';
 import { publishTopic, movej } from '@/composable/useRobot'
+import { ElMessage, ElMessageBox } from 'element-plus';
 
 const { gray01 } = palette
+
+const clickButton = (type :string) => {
+  ElMessageBox.confirm(
+    '진행하시겠습니까??',
+    '경고',
+    {
+      confirmButtonText: '확인',
+      cancelButtonText: '취소',
+      type: 'warning',
+    }
+  )
+    .then(() => {
+      publishTopic(type)
+    })
+}
 
 </script>
 
