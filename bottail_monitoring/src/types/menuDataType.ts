@@ -16,3 +16,10 @@ export type AdminMenuType = {
   title: string
   category: string
 }
+
+export type OrderDetailsType = {
+  category: string
+  name: string
+  price: number
+  time: string
+}

@@ -46,14 +46,18 @@
 </template>
 
 <script lang="ts" setup>
-import useCounterStore from '@/store/storeMenuData';
-import palette from '../styles/colors'
+import useMenuStore from '@/store/storeMenuData';
+import palette from '@/styles/colors'
 import { storeToRefs } from 'pinia';
 import { ElMessage } from 'element-plus'
-import { publishOrderTopic } from '../utils/ros2Utils'
+import { publishTopic } from '@/composable/useRobot'
+import { pushDataBase } from '@/composable/useFirebase'
+import { getNowDate } from '@/utils/dateUtils'
+import useModalStore from '@/store/storeModal';
 
-const { modalState, orderItemInfo } = storeToRefs(useCounterStore())
-const { openCloseModal } = useCounterStore()
+const { menuState, orderItemInfo } = storeToRefs(useMenuStore())
+const { modalState } = storeToRefs(useModalStore())
+const { openCloseModal } = useModalStore()
 
 const { gray01 } = palette
 
@@ -62,7 +66,17 @@ const getPriceText = (price: number) => {
 }
 
 const clickConfirmButton = () => {
-  publishOrderTopic('highball')
+  // topic 발행
+  publishTopic('data:highball')
+
+  // DB 저장
+  pushDataBase('orderDetails', {
+    category: menuState.value,
+    name: orderItemInfo.value.name,
+    price: orderItemInfo.value.price,
+    time: getNowDate()
+  })
+
   ElMessage({
     message: '주문이 완료되었습니다.',
     type: 'success',

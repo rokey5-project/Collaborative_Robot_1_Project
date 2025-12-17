@@ -27,14 +27,16 @@
 
 <script setup lang="ts">
 import type { MenuItemType } from '@/types/menuDataType'
-import palette from '../styles/colors'
-import useMenuStore from '../store/storeMenuData';
+import palette from '@/styles/colors'
+import useMenuStore from '@/store/storeMenuData';
+import useModalStore from '@/store/storeModal';
 
 const props = defineProps<{
   item: MenuItemType
 }>();
 
-const { openCloseModal, setOrderItemInfo } = useMenuStore()
+const { setOrderItemInfo } = useMenuStore()
+const { openCloseModal } = useModalStore()
 
 const { gray01 } = palette
 
@@ -55,6 +57,7 @@ const getPriceText = (price: number) => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   .menu-item-image-wrap {
     width: 100%;

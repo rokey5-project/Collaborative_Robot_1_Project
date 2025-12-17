@@ -38,7 +38,7 @@ import { ElMessage } from 'element-plus'
 import palette from '@/styles/colors';
 
 const loginInfo = reactive({
-  id: '',
+  id: 'admin',
   pw: ''
 })
 
