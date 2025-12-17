@@ -11,10 +11,12 @@
       >
         <el-menu-item index="state">로봇 상태</el-menu-item>
         <el-menu-item index="control">로봇 조그</el-menu-item>
+        <el-menu-item index="recovery">로봇 복구</el-menu-item>
       </el-menu>
       <div>
         <RobotState v-if="activeIndex === 'state'"/>
         <RobotControl v-if="activeIndex === 'control'"/>
+        <RobotRecovery v-if="activeIndex === 'recovery'"/>
       </div>
     </div>
   </div>
@@ -24,6 +26,7 @@
 import { ref } from 'vue';
 import RobotState from '@/components/RobotState.vue';
 import RobotControl from '@/components/RobotControl.vue';
+import RobotRecovery from '@/components/RobotRecovery.vue';
 
 const activeIndex = ref('state')
 
