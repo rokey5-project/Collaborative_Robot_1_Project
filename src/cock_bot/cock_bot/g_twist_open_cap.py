@@ -76,12 +76,12 @@ def open_cap():
 
     # Z-rotation force (twist open)
     set_desired_force(
-        [0.0, 0.0, 0.0, 0.0, 0.0, 15.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 20.0],
         [0, 0, 0, 0, 0, 1],
         time=0.0,
         mod=0
     )
-
+    
     wait(1.5)
 
     release_force(time=0.0)
@@ -96,10 +96,38 @@ def open_cap():
         mod=1
     )
 
+def just_twist():
+    from DSR_ROBOT2 import (
+        task_compliance_ctrl,
+        set_stiffnessx,
+        set_desired_force,
+        release_force,
+        release_compliance_ctrl,
+        movel,
+        posx,
+        wait
+    )
+
+    task_compliance_ctrl()
+    set_stiffnessx([3000.0, 3000.0, 50.0, 200.0, 200.0, 200.0], time=0.0)
+
+    # Z-rotation force (twist open)
+    set_desired_force(
+        [0.0, 0.0, 0.0, 0.0, 3.0, -5.12],
+        [0, 0, 0, 0, 0, 1],
+        time=0.0,
+        mod=0
+    )
+    
+    wait(1.5)
+
+    release_force(time=0.0)
+    release_compliance_ctrl()
+
 
 def put_cap():
     """DRL: put_cap"""
-    from DSR_ROBOT2 import movel, posx
+    from DSR_ROBOT2 import movel, posx, wait, movej, posj, task_compliance_ctrl, set_stiffnessx, set_desired_force, release_force, release_compliance_ctrl
 
     # MoveLNode (ABS)
     movel(
@@ -110,6 +138,30 @@ def put_cap():
         mod=0
     )
 
+    # movel(
+    # posx(-9.50, 9.75, 0.00, 0.00, 0.00, 0.00),
+    # vel=VEL_L,
+    # acc=ACC_L,
+    # ref=0,
+    # mod=1
+    # )
+
+    task_compliance_ctrl()
+    set_stiffnessx([3000.0, 3000.0, 50.0, 200.0, 200.0, 200.0], time=0.0)
+
+    # Z-rotation force (twist open)
+    set_desired_force(
+        [0.0, 0.0, 0.0, 0.0, 0.0, 5.00],
+        [0, 0, 0, 0, 0, 1],
+        time=0.0,
+        mod=0
+    )
+    
+    wait(1.5)
+
+    release_force(time=0.0)
+    release_compliance_ctrl()
+
     # MoveLNode (REL)
     movel(
         posx(0.00, 0.00, -95.00, 0.00, 0.00, 0.00),
@@ -119,7 +171,16 @@ def put_cap():
         mod=1
     )
 
+    wait(1.5)
     cap_ungrip()
+
+    movel(
+        posx(-15.0, 0.00, 0.00, 0.00, 0.00, 0.00),
+        vel=100,
+        acc=ACC_L,
+        ref=0,
+        mod=1
+    )
 
 
 # --------------------
@@ -128,7 +189,10 @@ def put_cap():
 def twist_open_cap_seq():
     from DSR_ROBOT2 import (
         movej,
+        movel,
         posj,
+        posx,
+        wait,
         set_singular_handling,
         set_velj,
         set_accj,
@@ -153,6 +217,7 @@ def twist_open_cap_seq():
 
     cap_grip()
     open_cap()
+    # just_twist()
     put_cap()
 
     # MoveJNode (retreat)
@@ -161,6 +226,8 @@ def twist_open_cap_seq():
         vel=VEL_J,
         acc=ACC_J
     )
+
+
 
 
 # --------------------

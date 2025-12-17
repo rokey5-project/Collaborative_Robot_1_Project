@@ -1,140 +1,115 @@
+# fast
 import rclpy
 import DR_init
+import time
 
-# --------------------
+# ============================================================
 # Robot Config
-# --------------------
+# ============================================================
 ROBOT_ID = "dsr01"
 ROBOT_MODEL = "m0609"
-ROBOT_TCP = "Tool Weight"      # TCP 이름
-ROBOT_TOOL = "GripperDA_v1"    # Tool 이름
+ROBOT_TCP = "Tool Weight"
+ROBOT_TOOL = "GripperDA_v1"
 
 DR_init.__dsr__id = ROBOT_ID
 DR_init.__dsr__model = ROBOT_MODEL
 
 
-# --------------------
-# Motion Parameters
-# (DRL: set_velj / set_accj / set_velx / set_accx)
-# --------------------
-VEL_J = 60
-ACC_J = 150
-
-VEL_L = 250
-ACC_L = 1000
-
-
-# --------------------
+# ============================================================
 # Robot Initialize
-# --------------------
+# ============================================================
 def initialize_robot():
     from DSR_ROBOT2 import set_tool, set_tcp
-
     print("#" * 50)
-    print("Initializing robot for m5_shaking")
-    print(f"ROBOT_ID    : {ROBOT_ID}")
-    print(f"ROBOT_MODEL : {ROBOT_MODEL}")
+    print("Initialize Robot")
     print("#" * 50)
-
     set_tool(ROBOT_TOOL)
     set_tcp(ROBOT_TCP)
 
 
-# --------------------
-# DSR Motion Functions
-# --------------------
-def shaking_motion():
-    """DRL: m5_shaking main body"""
-    from DSR_ROBOT2 import movej, move_periodic, posj
+# ============================================================
+# Periodic shaker
+# Z : 상하 (주동작)
+# Y : 좌우 반복 (보조)
+# RZ: 손목 비틀기 (6번 관절처럼 보이게)
+# ============================================================
+def shaker_periodic(
+    y_amp=4,        # mm
+    z_amp=60.0,       # mm (기존 35 → 안정 영역)
+    rz_amp=4.0,       # deg (J6 위주 반응)
+    period=0.7,       # sec (기존 0.6 → 가속 감소)
+    atime=0.6,        # sec (period보다 약간 작게)
+    repeat=4
+):
+    from DSR_ROBOT2 import move_periodic
 
-    # MoveJNode
+    move_periodic(
+        amp=[
+            0.0,        # X
+            y_amp,      # Y
+            z_amp,      # Z
+            0.0,        # RX
+            0.0,        # RY
+            rz_amp      # RZ (손목 까딱)
+        ],
+        period=[
+            0.0,
+            period / 2.0,
+            period,
+            0.0,
+            0.0,
+            period / 2.0
+        ],
+        atime=atime,
+        repeat=repeat,
+        ref=0           # BASE 기준
+    )
+
+
+# ============================================================
+# Motion Sequence
+# ============================================================
+def shaking_motion():
+    from DSR_ROBOT2 import movej, posj
+
+    # ---------- Pose A ----------
     movej(
         posj(-22.92, -23.42, 102.94, 18.46, 55.67, -85.95),
-        vel=100.0,
-        acc=200.0
+        vel=80, acc=150
     )
+    shaker_periodic()
 
-    # MovePeriodicNode
-    move_periodic(
-        amp=[40.0, 0.0, 40.0, 0.0, 0.0, 0.0],
-        period=[0.80, 0.0, 0.80, 0.0, 0.0, 0.0],
-        atime=2.0,
-        repeat=5,
-        ref=0
-    )
-
-    # MoveJNode
+    # ---------- Pose B ----------
     movej(
         posj(-1.49, -26.95, 113.04, 25.20, 45.65, -146.29),
-        vel=100.0,
-        acc=200.0
+        vel=80, acc=150
     )
+    shaker_periodic()
 
-    # MovePeriodicNode
-    move_periodic(
-        amp=[40.0, 15.0, 40.0, 0.0, 0.0, 0.0],
-        period=[0.80, 0.80, 0.80, 0.0, 0.0, 0.0],
-        atime=1.5,
-        repeat=5,
-        ref=0
-    )
-
-    # MoveJNode
+    # ---------- Pose C ----------
     movej(
         posj(-24.65, -24.51, 104.93, 31.44, 54.92, -124.97),
-        vel=100.0,
-        acc=200.0
+        vel=80, acc=150
     )
-
-    # MovePeriodicNode
-    move_periodic(
-        amp=[40.0, 0.0, 40.0, 0.0, 0.0, 0.0],
-        period=[0.80, 0.0, 0.80, 0.0, 0.0, 0.0],
-        atime=1.5,
-        repeat=5,
-        ref=0
-    )
+    shaker_periodic()
 
 
-# --------------------
-# Sequence
-# --------------------
-def shaking_seq():
-    from DSR_ROBOT2 import (
-        set_singular_handling,
-        set_velj,
-        set_accj,
-        set_velx,
-        set_accx,
-        DR_AVOID
-    )
-
-    # DRL: global motion settings
-    set_singular_handling(DR_AVOID)
-    set_velj(VEL_J)
-    set_accj(ACC_J)
-    set_velx(VEL_L, 80.625)
-    set_accx(ACC_L, 400.0)
-
-    # DRL loop body
-    shaking_motion()
-
-
-# --------------------
+# ============================================================
 # Main
-# --------------------
+# ============================================================
 def main():
     rclpy.init()
-    node = rclpy.create_node("m5_shaking_node", namespace=ROBOT_ID)
+    node = rclpy.create_node(
+        "cocktail_shaker_human_like",
+        namespace=ROBOT_ID
+    )
     DR_init.__dsr__node = node
+
+    time.sleep(1.0)
 
     try:
         initialize_robot()
-        shaking_seq()
-
-    except KeyboardInterrupt:
-        pass
-
+        shaking_motion()
     finally:
         if rclpy.ok():
             rclpy.shutdown()
@@ -142,3 +117,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
