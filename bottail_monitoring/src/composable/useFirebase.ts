@@ -25,7 +25,7 @@ const subscribeDB = () => {
   if (robotStateRef) {
     onValue(robotStateRef, (snapshot) => {
       const data = snapshot.val()
-      // console.log('로봇상태', data)
+
       setRobotState(data)
     })
   }

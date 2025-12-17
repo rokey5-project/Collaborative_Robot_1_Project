@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { RobotState } from '@/types/robotType'
+import { reorderArray } from '@/utils/mathUtils'
 
 const useRobotStore = defineStore('robot', () => {
   // 로봇 상태값
@@ -18,8 +19,16 @@ const useRobotStore = defineStore('robot', () => {
     },
     timestamp: 0,
   })
+
   const setRobotState = (state: RobotState) => {
-    robotState.value = state
+    const updatedRobotState = {
+      ...state,
+      joint: {
+        ...state.joint,
+        deg: reorderArray(state.joint.deg) as number[]
+      }
+    };
+    robotState.value = updatedRobotState
   }
 
   return {
