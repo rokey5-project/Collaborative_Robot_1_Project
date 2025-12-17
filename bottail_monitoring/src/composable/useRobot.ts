@@ -66,25 +66,17 @@ const subscribeTopicConfigs: TopicConfig[] = [
     name: '/dsr01/joint_states',
     messageType: 'sensor_msgs/JointState',
     handler: (msg) => {
-      robotState.joint.deg = msg.position.map((r: number) => +((r * 180) / Math.PI).toFixed(3))
+      robotState.joint.deg = msg.position.map((r: number) => +((r * 180) / Math.PI)) ?? []
       robotState.joint.vel = msg.velocity ?? []
       robotState.joint.effort = msg.effort ?? []
     },
   },
 
   {
-    name: '/dsr01/robot_state',
-    messageType: 'dsr_msgs/RobotState',
+    name: '/dsr01/cocktail/status',
+    messageType: 'std_msgs.msg/String',
     handler: (msg) => {
       robotState.system.state = msg.robot_state
-    },
-  },
-
-  {
-    name: '/dsr01/current_posx',
-    messageType: 'std_msgs/Float64MultiArray',
-    handler: (msg) => {
-      robotState.tcp.pos = msg.data
     },
   },
 ]
@@ -105,7 +97,7 @@ const subscribeRobotState = () => {
 
 // robotState DB에 저장
 const writeRobotStateToDB = throttle(() => {
-  setDataBase('robot_status', {
+  setDataBase('robotStatus', {
     ...robotState,
     timestamp: Date.now(),
   })
@@ -115,7 +107,7 @@ const writeRobotStateToDB = throttle(() => {
 const movel = (pos: number[], vel: number, acc: number, ref: number = 0) => {
   const service = new ROSLIB.Service({
     ros,
-    name: '/dsr/movel',
+    name: '/dsr01/motion/move_line',
     serviceType: 'dsr_msgs/MoveLine',
   })
 
@@ -132,7 +124,7 @@ const movel = (pos: number[], vel: number, acc: number, ref: number = 0) => {
 const movej = (pos: number[], vel: number, acc: number) => {
   const service = new ROSLIB.Service({
     ros,
-    name: '/dsr/movej',
+    name: '/dsr01/motion/move_joint',
     serviceType: 'dsr_msgs/MoveJoint',
   })
 
@@ -140,6 +132,31 @@ const movej = (pos: number[], vel: number, acc: number) => {
     service.callService({ pos, vel, acc }, resolve)
   })
 }
+
+// const currentPos = () => {
+//   const service = new ROSLIB.Service({
+//     ros,
+//     name: '/dsr01/system/get_current_pose',
+//     serviceType: 'dsr_msgs2/srv/GetCurrentPose',
+//   })
+
+//   return new Promise((resolve, reject) => {
+//     service.callService({}, resolve, reject)
+//   })
+// }
+
+// const updateRobotTcpFromService = async () => {
+//   try {
+//     const res: any = await currentPos()
+//     robotState.tcp.pos = res.posx
+//   } catch (e) {
+//     console.error('get_current_posx failed', e)
+//   }
+// }
+
+// setInterval(() => {
+//   updateRobotTcpFromService()
+// }, 200)
 
 // robotState 감지해서 writeRobotStateToDB 실행
 watch(
