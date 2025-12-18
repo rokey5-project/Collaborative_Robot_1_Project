@@ -20,7 +20,7 @@
     </div>
     <div class="menu-item-price-wrap">
       <p class="menu-item-price-text">
-        {{  getPriceText(props.item.price) }}
+        {{ getPriceText(props.item.price) }}
       </p>
     </div>
   </div>
