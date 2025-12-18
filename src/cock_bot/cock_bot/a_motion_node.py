@@ -62,7 +62,7 @@ def get_shaker():
     movel(posx(586.13, 0.66, 146.01, 179.92, -92.28, 90.08))
     shaker_grip()
     movel(posx(0, 0, 100, 0, 0, 0), ref=0, mod=1)
-    movel(posx(-100, 0, 0, 0, 0, 0), ref=0, mod=1)
+    movel(posx(-120, 0, 0, 0, 0, 0), ref=0, mod=1)
 
 def get_drink():
     from DSR_ROBOT2 import movel, wait, posx
@@ -72,8 +72,8 @@ def get_drink():
 
     movel(Global_dispenser_first_point)
     wait(4.0)
-    movel(Global_dispenser_second_point)
-    wait(4.0)
+    # movel(Global_dispenser_second_point)
+    # wait(4.0)
     movel(Global_dispenser_third_point)
     wait(4.0)
 

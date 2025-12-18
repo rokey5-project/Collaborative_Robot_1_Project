@@ -74,7 +74,7 @@ const subscribeTopicConfigs: TopicConfig[] = [
 
   {
     name: '/dsr01/cocktail/status',
-    messageType: 'std_msgs.msg/String',
+    messageType: 'std_msgs/String',
     handler: (msg) => {
       robotState.system.state = msg.robot_state
     },

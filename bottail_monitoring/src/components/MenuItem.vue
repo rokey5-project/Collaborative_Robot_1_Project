@@ -2,6 +2,7 @@
   <div class="menu-item-container" @click="clickItem">
     <div class="menu-item-image-wrap">
       <img
+        
         :src="props.item.image"
         :alt="props.item.name"
         class="menu-item-image"

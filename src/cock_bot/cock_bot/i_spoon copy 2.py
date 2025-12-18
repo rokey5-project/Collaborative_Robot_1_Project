@@ -23,9 +23,6 @@ ACCJ_WORK = 80.0
 VELX_LIN = 120.0        # mm/s
 ACCX_LIN = 400.0        # mm/s²
 
-VEL_J = 30
-ACC_J = 200
-
 
 # --------------------
 # Spiral Params (OLD API)
@@ -56,7 +53,7 @@ def shaker_grip():
     wait(1.0)
     
 def shaker_ungrip():
-    from DSR_ROBOT2 import set_digital_output, wait, movel, posx
+    from DSR_ROBOT2 import set_digital_output, wait
     set_digital_output(1, 0)   # OFF
     wait(0.2)
     set_digital_output(2, 1)   # ON
@@ -65,32 +62,24 @@ def shaker_ungrip():
 
 
 
-
 # --------------------
 # Motion Blocks
 # --------------------
 def get_spoon():
-    from DSR_ROBOT2 import movel, posx, wait, movej, posj
+    from DSR_ROBOT2 import movel, posx, wait
 
-    # movel(
-    #     posx(469.210, -162.470, 134.960, 148.41, -91.23, 88.96),
-    #     vel=VELX_LIN,
-    #     acc=ACCX_LIN
-    # )
-    movej(
-        posj(-15.82, 34.28, 121.81, 16.97, -65.74, -97.66),
-        vel=VEL_J,
-        acc=ACC_J
+    movel(
+        posx(502.92, -86.31, 232.210, 154.83, -92.03, 89.56),
+        vel=VELX_LIN,
+        acc=ACCX_LIN
     )
     wait(0.5)
     shaker_grip()
 
     movel(
-        posx(0.00, 0.00, 100.00, 0.00, 0.00, 0.00),
+        posx(492.76, -91.51, 458.34, 167.3, -96.05, 89.56),
         vel=VELX_LIN,
-        acc=ACCX_LIN,
-        ref=0,
-        mod=1
+        acc=ACCX_LIN
     )
 
 
@@ -98,7 +87,7 @@ def move_spoon():
     from DSR_ROBOT2 import movel, posx, wait
 
     movel(
-        posx(466.240, 7.680, 379.390, 178.47, -88.71, -93.13),
+        posx(557.15, 7.54, 441.68, 178.24, -96.62, 90.86),
         vel=VELX_LIN,
         acc=ACCX_LIN
     )
@@ -106,32 +95,17 @@ def move_spoon():
     wait(1.0)
 
     movel(
-        posx(553.910, 11.040, 372.420, 178.29, -88.88, -93.04),
+        posx(572.30, 14.41, 387.67, 178.01, -100.21, 91.27),
         vel=VELX_LIN,
         acc=ACCX_LIN
-    )
-
-    movel(
-        posx(0.00, 0.00, -130.00, 0.00, 0.00, 0.00),
-        vel=VELX_LIN,
-        acc=ACCX_LIN,
-        ref=0,
-        mod=1
     )
 
 def rev_move_spoon():
     from DSR_ROBOT2 import movel, posx, wait
 
-    movel(
-        posx(0.00, 0.00, 130.00, 0.00, 0.00, 0.00),
-        vel=VELX_LIN,
-        acc=ACCX_LIN,
-        ref=0,
-        mod=1
-    )
 
     movel(
-        posx(379.900, 11.680, 366.480, 178.62, -88.73, -92.97),
+        posx(572.30, 14.41, 387.67, 178.01, -100.21, 91.27),
         vel=VELX_LIN,
         acc=ACCX_LIN
     )
@@ -139,43 +113,35 @@ def rev_move_spoon():
     wait(1.0)
 
     movel(
-        posx(466.700, -167.900, 221.980, 148.57, -91.21, 89.05),
+        posx(557.15, 7.54, 441.68, 178.24, -96.62, 90.86),
         vel=VELX_LIN,
         acc=ACCX_LIN
     )
+
+def rev_get_spoon():
+    from DSR_ROBOT2 import movel, posx, wait
 
     movel(
-        posx(469.210, -162.470, 134.000, 148.41, -91.23, 88.96),
+        posx(492.76, -91.51, 458.34, 167.3, -96.05, 89.56),
         vel=VELX_LIN,
         acc=ACCX_LIN
     )
 
-
-
-# def rev_get_spoon():
-#     from DSR_ROBOT2 import movel, posx, wait
-
-#     movel(
-#         posx(492.76, -91.51, 458.34, 167.3, -96.05, 89.56),
-#         vel=VELX_LIN,
-#         acc=ACCX_LIN
-#     )
-
-#     wait(0.5)
+    wait(0.5)
 
     
-#     movel(
-#         posx(502.92, -86.31, 232.210, 154.83, -92.03, 89.56),
-#         vel=VELX_LIN,
-#         acc=ACCX_LIN
-#     )
-#     shaker_ungrip()
+    movel(
+        posx(502.92, -86.31, 232.210, 154.83, -92.03, 89.56),
+        vel=VELX_LIN,
+        acc=ACCX_LIN
+    )
+    shaker_ungrip()
     
-#     movel(
-#         posx(444.160, 11.040, 202.08, 178.12, -91.6, 88.95),
-#         vel=VELX_LIN,
-#         acc=ACCX_LIN
-#     )
+    movel(
+        posx(444.160, 11.040, 202.08, 178.12, -91.6, 88.95),
+        vel=VELX_LIN,
+        acc=ACCX_LIN
+    )
 
 
 def stir_spiral():
@@ -200,8 +166,6 @@ def cocktail_sequence():
         set_singular_handling,
         set_velj,
         set_accj,
-        movel,
-        posx
     )
 
     set_singular_handling(1)  # DR_AVOID
@@ -212,15 +176,7 @@ def cocktail_sequence():
     move_spoon()
     stir_spiral()
     rev_move_spoon()
-    shaker_ungrip()
-    movel(
-        posx(479.940, -2.900, 144.510, 0.93, 91.58, -90.67),
-        vel=VELX_LIN,
-        acc=ACCX_LIN
-    )
-
-
-    # rev_get_spoon()
+    rev_get_spoon()
 
 
 # --------------------

@@ -76,7 +76,7 @@ def open_cap():
 
     # Z-rotation force (twist open)
     set_desired_force(
-        [0.0, 0.0, 0.0, 0.0, 0.0, 20.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 5.0],
         [0, 0, 0, 0, 0, 1],
         time=0.0,
         mod=0
@@ -131,7 +131,7 @@ def put_cap():
 
     # MoveLNode (ABS)
     movel(
-        posx(577.09, -172.70, 281.59, 177.10, -89.76, 89.52),
+        posx(571.15, -171.80, 281.59, 177.10, -89.76, 89.52),
         vel=VEL_L,
         acc=ACC_L,
         ref=0,
@@ -175,7 +175,7 @@ def put_cap():
     cap_ungrip()
 
     movel(
-        posx(-15.0, 0.00, 0.00, 0.00, 0.00, 0.00),
+        posx(-8.0, 0.00, 0.00, 0.00, 0.00, 0.00),
         vel=100,
         acc=ACC_L,
         ref=0,
@@ -216,6 +216,7 @@ def twist_open_cap_seq():
     )
 
     cap_grip()
+    wait(0.5)
     open_cap()
     # just_twist()
     put_cap()

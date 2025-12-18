@@ -18,7 +18,7 @@ running = True
 
 RECIPES = {
     "mojito": [
-        'a_motion_node.py',
+        'a1_motion_node.py',
         'b_put_shaker.py',
         'c_close_cap.py',
         'd_get_shaker.py',
@@ -30,6 +30,7 @@ RECIPES = {
     "highball": [
         'a_motion_node.py',
         'b_put_shaker.py',
+        'i_spoon.py',
         'h_pour_drink.py',
     ],
 }

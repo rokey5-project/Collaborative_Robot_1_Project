@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
         	'start_motion = cock_bot.a_motion_node:main',
+            'start_motion_m = cock_bot.a1_motion_node:main',
             'put_shaker = cock_bot.b_put_shaker:main',
             'close_cap = cock_bot.c_close_cap:main',
             'get_shaker = cock_bot.d_get_shaker:main',

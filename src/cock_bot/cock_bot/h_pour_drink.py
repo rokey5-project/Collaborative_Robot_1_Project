@@ -94,9 +94,11 @@ def move_and_pour_drink():
         radius=50.0
     )
 
+    
+
     # AMoveJNode (REL) – rotate wrist for pouring
     amovej(
-        posj(0.00, 0.00, 0.00, 0.00, 0.00, -95.00),
+        posj(0.00, 0.00, 0.00, 0.00, 0.00, -120.00),
         mod=1
     )
 
@@ -111,6 +113,7 @@ def move_and_pour_drink():
         mod=1
     )
 
+    wait(1.0)
 
 def move_back_shaker_point():
     """DRL: move_back_shaker_point"""
@@ -125,7 +128,7 @@ def move_back_shaker_point():
 
     # MoveJNode (REL) – rotate back
     movej(
-        posj(0.00, 0.00, 0.00, 0.00, 0.00, 95.00),
+        posj(0.00, 0.00, 0.00, 0.00, 0.00, 120.00),
         vel=VEL_J,
         acc=ACC_J,
         mod=1

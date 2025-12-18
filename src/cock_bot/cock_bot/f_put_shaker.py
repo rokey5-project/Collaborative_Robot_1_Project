@@ -54,7 +54,7 @@ def shaker_ungrip():
 
 def put_shaker():
     """DRL: put_shaker"""
-    from DSR_ROBOT2 import movej, movel, posj, posx
+    from DSR_ROBOT2 import movej, movel, posj, posx, set_desired_force, release_force, wait
 
     # MoveJNode
     movej(
@@ -72,12 +72,21 @@ def put_shaker():
 
     # MoveLNode (REL)
     movel(
-        posx(0.00, 0.00, -50.00, 0.00, 0.00, 0.00),
+        posx(0.00, 0.00, -60.00, 0.00, 0.00, 0.00),
         vel=VEL_L,
         acc=ACC_L,
         ref=0,
         mod=1
     )
+
+    # set_desired_force(
+    #     [0.0, 0.0, -15.0, 0.0, 0.0, 0.0],
+    #     [0, 0, 1, 0, 0, 0],
+    #     time=0.0,
+    #     mod=0
+    # )
+    # wait(5.0)
+    # release_force(time=0.0)
 
 
 # --------------------

@@ -41,7 +41,7 @@ def put_shaker():
 
     movej(posj(-0.01, 19.67, 124.45, -0.16, -51.77, -89.24))
     movel(posx(582.00, -0.02, 192.31, 179.55, -92.27, 90.53), radius=0.00, ref=0, mod=DR_MV_MOD_ABS)
-    movel(posx(0.00, 0.00, -40.00, 0.00, 0.00, 0.00), radius=0.00, ref=0, mod=DR_MV_MOD_REL)
+    movel(posx(0.00, 0.00, -55.00, 0.00, 0.00, 0.00), radius=0.00, ref=0, mod=DR_MV_MOD_REL)
 
 def shaker_grip():
     from DSR_ROBOT2 import set_digital_output, wait
