@@ -37,7 +37,10 @@ setup(
             'state_check = cock_bot.robot_state_checker:main',
             'spoon_spin_node = cock_bot.i_spoon:main',
             'robot_recovery_auto = cock_bot.robot_recovery_auto:main',
-            'home = cock_bot.homepose:main'
+            'home = cock_bot.homepose:main',
+            'no_shaking_1 = cock_bot.no_shaking:main',
+            'no_shaking_2 = cock_bot.no_shaking_2:main',
+            'no_shaking_3 = cock_bot.no_shaking_3:main',
         ],
     },
 )
