@@ -133,31 +133,6 @@ const movej = (pos: number[], vel: number, acc: number) => {
   })
 }
 
-// const currentPos = () => {
-//   const service = new ROSLIB.Service({
-//     ros,
-//     name: '/dsr01/system/get_current_pose',
-//     serviceType: 'dsr_msgs2/srv/GetCurrentPose',
-//   })
-
-//   return new Promise((resolve, reject) => {
-//     service.callService({}, resolve, reject)
-//   })
-// }
-
-// const updateRobotTcpFromService = async () => {
-//   try {
-//     const res: any = await currentPos()
-//     robotState.tcp.pos = res.posx
-//   } catch (e) {
-//     console.error('get_current_posx failed', e)
-//   }
-// }
-
-// setInterval(() => {
-//   updateRobotTcpFromService()
-// }, 200)
-
 // robotState 감지해서 writeRobotStateToDB 실행
 watch(
   () => robotState,
