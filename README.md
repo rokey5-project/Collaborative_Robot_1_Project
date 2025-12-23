@@ -80,10 +80,7 @@
 
 ## 🎥 시연 영상
 
-<!--
-[![영상 제목](/bottail_monitoring/public/Tumbnail.PNG)](https://youtu.be/DPY0LymRcAk?si=c5qC5KyUh3cyv2LY) -->
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DPY0LymRcAk?si=c5qC5KyUh3cyv2LY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![영상 제목](/bottail_monitoring/public/Tumbnail.PNG)](https://youtu.be/DPY0LymRcAk?si=c5qC5KyUh3cyv2LY)
 
 <br>
 
