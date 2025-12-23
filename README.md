@@ -1,6 +1,7 @@
 # 두산 협동로봇(M0609) 기반 칵테일 제조 로봇 프로젝트
 
-![Tumbnail](/bottail_monitoring/public/thumbnail.jpg)
+![Tumbnail](/bottail_monitoring/public/Tumbnail.PNG)
+![Tumbnail](/bottail_monitoring/public/ui.png)
 
 <br>
 
@@ -8,19 +9,19 @@
 
 ### 1. [프로젝트 개요](#-프로젝트-개요)
 
-### 2. [Flow Chart](#-Flow-Chart)
-
 ### 2. [팀 구성 및 역할](#-팀-구성-및-역할)
 
 ### 3. [사용 기술](#-사용-기술)
 
-### 4. [System Architecture](#-System-Architecture)
+### 4. [Flow Chart](#-Flow-Chart)
 
-### 5. [Node Architecture](#-Node-Architecture)
+### 5. [System Architecture](#-System-Architecture)
 
-### 6. [시연 영상](#-시연-영상)
+### 6. [Node Architecture](#-Node-Architecture)
 
-### 7. [평가 및 피드백](#-평가-및-피드백)
+### 7. [시연 영상](#-시연-영상)
+
+### 8. [평가 및 피드백](#-평가-및-피드백)
 
 <br>
 
@@ -32,12 +33,6 @@
 원하는 메뉴를 선택하면 알맞은 레시피 방식으로 칵테일을 만들어줍니다.
 
 #### 📆 개발 기간 : 2025년 12월 08일 ~ 2025년 12월 19일
-
-<br>
-
-## 🎞️ Flow Chart
-
-![flow-chart](/bottail_monitoring/public/flow_chart.png)
 
 <br>
 
@@ -65,6 +60,12 @@
 
 <br>
 
+## 🎞️ Flow Chart
+
+![flow-chart](/bottail_monitoring/public/flow_chart.png)
+
+<br>
+
 ## 📝 System Architecture
 
 ![SA](/bottail_monitoring/public/system_architecture.png)
@@ -79,7 +80,10 @@
 
 ## 🎥 시연 영상
 
-[![영상 제목](/bottail_monitoring/public/Tumbnail.PNG)](https://youtu.be/DPY0LymRcAk?si=c5qC5KyUh3cyv2LY)
+<!--
+[![영상 제목](/bottail_monitoring/public/Tumbnail.PNG)](https://youtu.be/DPY0LymRcAk?si=c5qC5KyUh3cyv2LY) -->
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DPY0LymRcAk?si=c5qC5KyUh3cyv2LY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br>
 
