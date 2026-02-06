@@ -76,7 +76,7 @@
 
 ## 🔖 Node Architecture
 
-![SA](/bottail_monitoring/public/system_architecture.png)
+![SA](/bottail_monitoring/public/node_architecture.png)
 
 <br>
 
